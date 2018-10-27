@@ -10,6 +10,16 @@ using namespace std;
 
 int main()
 {
+	string newLine = getNewLine();
+	displayGreeting("Hello!");
+	string userEntry = promptForString("Please enter a value and press [Enter]");
+	cout << "User entered: '" << userEntry << "'";
+
+	return 0;
+}
+
+string getNewLine()
+{
 	// NOTE: keep newLine variable in top scope for re-use
 	string newLine;
 	{
@@ -18,19 +28,20 @@ int main()
 		newLineCharStream << std::endl;
 		newLine = newLineCharStream.str();
 	}
+	return newLine;
+}
 
+string promptForString(string prompt)
+{
+	string userEntry;
+	cout << prompt << getNewLine();
 	{
-		string greeting = "Hello!";
-		string prompt = "Please enter a value and press [Enter]";
-
-		cout << greeting << newLine << prompt << newLine;
-	}
-
-	{
-		string userEntry;
 		getline(cin, userEntry);
-		cout << "User entered: '" << userEntry << "'\n";
 	}
+	return userEntry;
+}
 
-	return 0;
+void displayGreeting(string greeting)
+{
+	cout << greeting << getNewLine();
 }
