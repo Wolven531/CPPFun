@@ -4,9 +4,23 @@
 
 #include <iostream>
 #include <sstream>
-#include <string>
 
-using namespace std;
+#include "CPPFun.h"
+
+int main()
+{
+	string newLine = getNewLine();
+	displayGreeting("Hello!");
+	string userEntry = promptForString("Please enter a value and press [Enter]");
+	cout << "User entered: '" << userEntry << "'";
+
+	return 0;
+}
+
+void displayGreeting(string greeting)
+{
+	cout << greeting << getNewLine();
+}
 
 string getNewLine()
 {
@@ -29,19 +43,4 @@ string promptForString(string prompt)
 		getline(cin, userEntry);
 	}
 	return userEntry;
-}
-
-void displayGreeting(string greeting)
-{
-	cout << greeting << getNewLine();
-}
-
-int main()
-{
-	string newLine = getNewLine();
-	displayGreeting("Hello!");
-	string userEntry = promptForString("Please enter a value and press [Enter]");
-	cout << "User entered: '" << userEntry << "'";
-
-	return 0;
 }
