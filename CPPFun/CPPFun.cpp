@@ -29,7 +29,7 @@ string getNewLine()
 	{
 		// NOTE: we drop newLineCharStream to lower scope so it is cleared after usage
 		ostringstream newLineCharStream;
-		newLineCharStream << std::endl;
+		newLineCharStream << endl;
 		newLine = newLineCharStream.str();
 	}
 	return newLine;
