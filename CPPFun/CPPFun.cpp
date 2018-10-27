@@ -8,16 +8,6 @@
 
 using namespace std;
 
-int main()
-{
-	string newLine = getNewLine();
-	displayGreeting("Hello!");
-	string userEntry = promptForString("Please enter a value and press [Enter]");
-	cout << "User entered: '" << userEntry << "'";
-
-	return 0;
-}
-
 string getNewLine()
 {
 	// NOTE: keep newLine variable in top scope for re-use
@@ -44,4 +34,14 @@ string promptForString(string prompt)
 void displayGreeting(string greeting)
 {
 	cout << greeting << getNewLine();
+}
+
+int main()
+{
+	string newLine = getNewLine();
+	displayGreeting("Hello!");
+	string userEntry = promptForString("Please enter a value and press [Enter]");
+	cout << "User entered: '" << userEntry << "'";
+
+	return 0;
 }
