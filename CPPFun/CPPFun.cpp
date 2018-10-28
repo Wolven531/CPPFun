@@ -9,9 +9,9 @@
 
 int main()
 {
-	string newLine = getNewLine();
+	auto newLine(getNewLine());
 	displayGreeting("Hello!");
-	string userEntry = promptForString("Please enter a value and press [Enter]");
+	auto userEntry(promptForString("Please enter a value and press [Enter]"));
 	cout << "User entered: '" << userEntry << "'";
 
 	return 0;
@@ -40,7 +40,10 @@ string promptForString(string prompt)
 	string userEntry;
 	cout << prompt << getNewLine();
 	{
-		getline(cin, userEntry);
+		// NOTE: unsure of the difference here
+		// TODO: Look up the difference
+		//getline(cin, userEntry);
+		cin >> userEntry;
 	}
 	return userEntry;
 }
