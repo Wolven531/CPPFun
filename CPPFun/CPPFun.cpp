@@ -37,15 +37,19 @@ string getNewLine()
 	return newLine;
 }
 
-string promptForString(string prompt)
+string promptForString(string prompt, bool acceptsBlank)
 {
 	string userEntry;
 	{
 		cout << prompt << getNewLine();
-		// NOTE: unsure of the difference here
-		// TODO: Look up the difference
-		//getline(cin, userEntry);
-		cin >> userEntry;
+		if (acceptsBlank) {
+			// NOTE: can accept blank input
+			getline(cin, userEntry);
+		}
+		else {
+			// NOTE: will not return until a value is entered
+			cin >> userEntry;
+		}
 	}
 	return userEntry;
 }
