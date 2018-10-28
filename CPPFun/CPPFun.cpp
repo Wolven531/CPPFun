@@ -9,14 +9,16 @@
 
 int main()
 {
-	auto newLine(getNewLine());
 	displayGreeting("Hello!");
 	auto userEntry(promptForString("Please enter a value and press [Enter]"));
-	cout << "User entered: '" << userEntry << "'";
+	cout << "User entered: '" << userEntry << "'" << getNewLine();
 
 	return 0;
 }
 
+// TODO: is a way to shorten this simple function definition
+// TODO: perhaps make this method static
+// TODO: does C++ have static
 void displayGreeting(string greeting)
 {
 	cout << greeting << getNewLine();
@@ -38,8 +40,8 @@ string getNewLine()
 string promptForString(string prompt)
 {
 	string userEntry;
-	cout << prompt << getNewLine();
 	{
+		cout << prompt << getNewLine();
 		// NOTE: unsure of the difference here
 		// TODO: Look up the difference
 		//getline(cin, userEntry);
