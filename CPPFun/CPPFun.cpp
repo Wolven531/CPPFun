@@ -7,7 +7,7 @@
 
 #include "CPPFun.h"
 
-// TODO: is a way to shorten this simple function definition
+// TODO: search for way to shorten this simple function definition
 void Prompter::displayGreeting(string greeting)
 {
 	cout << greeting << getNewLine();
