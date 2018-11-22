@@ -7,24 +7,13 @@
 
 #include "CPPFun.h"
 
-int main()
-{
-	displayGreeting("Hello!");
-	auto userEntry(promptForString("Please enter a value and press [Enter]"));
-	cout << "User entered: '" << userEntry << "'" << getNewLine();
-
-	return 0;
-}
-
 // TODO: is a way to shorten this simple function definition
-// TODO: perhaps make this method static
-// TODO: does C++ have static
-void displayGreeting(string greeting)
+void Prompter::displayGreeting(string greeting)
 {
 	cout << greeting << getNewLine();
 }
 
-string getNewLine()
+string Prompter::getNewLine()
 {
 	// NOTE: keep newLine variable in top scope for re-use
 	string newLine;
@@ -37,7 +26,7 @@ string getNewLine()
 	return newLine;
 }
 
-string promptForString(string prompt, bool acceptsBlank)
+string Prompter::promptForString(string prompt, bool acceptsBlank)
 {
 	string userEntry;
 	{
@@ -52,4 +41,17 @@ string promptForString(string prompt, bool acceptsBlank)
 		}
 	}
 	return userEntry;
+}
+
+int main()
+{
+	Prompter prompter;
+	// TODO: create and call a static method on Prompter
+	// Prompter::displayGreeting("Hello!");
+	// Prompter::getNewLine()
+	prompter.displayGreeting("Hello!");
+	auto userEntry(prompter.promptForString("Please enter a value and press [Enter]"));
+	cout << "User entered: '" << userEntry << "'" << prompter.getNewLine();
+
+	return 0;
 }

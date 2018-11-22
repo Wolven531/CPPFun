@@ -4,6 +4,9 @@
 
 using namespace std;
 
-void displayGreeting(string greeting);
-string getNewLine();
-string promptForString(string prompt, bool acceptsBlank = true);
+class Prompter {
+	public:
+		string getNewLine();
+		void displayGreeting(string greeting);
+		string promptForString(string prompt, bool acceptsBlank = true);
+};
