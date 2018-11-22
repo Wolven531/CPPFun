@@ -10,7 +10,7 @@
 // TODO: search for way to shorten this simple function definition
 void Prompter::displayGreeting(string greeting)
 {
-	cout << greeting << getNewLine();
+	cout << greeting << this->getNewLine();
 }
 
 string Prompter::getNewLine()
@@ -30,7 +30,7 @@ string Prompter::promptForString(string prompt, bool acceptsBlank)
 {
 	string userEntry;
 	{
-		cout << prompt << getNewLine();
+		cout << prompt << this->getNewLine();
 		if (acceptsBlank) {
 			// NOTE: can accept blank input
 			getline(cin, userEntry);
