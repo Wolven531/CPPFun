@@ -32,6 +32,8 @@ string Prompter::promptForString(string prompt, bool acceptsBlank)
 	string userEntry;
 	{
 		cout << prompt << this->getNewLine();
+		cout << "$> ";
+
 		if (acceptsBlank) {
 			// NOTE: can accept blank input
 			getline(cin, userEntry);
