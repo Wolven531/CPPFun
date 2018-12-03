@@ -21,12 +21,18 @@
     <ClInclude Include="CPPFun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Prompter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CPPFun.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Prompter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
