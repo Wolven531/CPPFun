@@ -6,17 +6,30 @@
 #include <sstream>
 
 #include "CPPFun.h"
+#include "Fibonacci.h"
 #include "Prompter.h"
 
 int main()
 {
+	Fibonacci fibo;
 	Prompter prompter;
-	// TODO: create and call a static method on Prompter
-	// Prompter::displayGreeting("Hello!");
-	// Prompter::getNewLine()
+
 	prompter.displayGreeting("Hello!");
-	auto userEntry(prompter.promptForString("Please enter a value and press [Enter]", false));
-	cout << "User entered: '" << userEntry << "'" << prompter.getNewLine();
+	auto nthDigitStr(prompter.promptForString("Please enter a value and press [Enter]", false));
+	int n;
+
+	try {
+		n = stoi(nthDigitStr);
+		cout << "Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
+
+		auto result(fibo.GetNthDigit(n));
+
+		cout << "Result = " << result << prompter.getNewLine();
+	}
+	catch (const invalid_argument& invalidArgEx) {
+		//cerr << "Could not parse integer value from input: " << invalidArgEx.what() << prompter.getNewLine();
+		cerr << "Could not parse integer value from input ('" << nthDigitStr << "'), ending..." << prompter.getNewLine();
+	}
 
 	return 0;
 }
