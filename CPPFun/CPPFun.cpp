@@ -20,7 +20,7 @@ int main()
 	prompter.displayGreeting("Hello!");
 
 	while (isRunning) {
-		auto nthDigitStr(prompter.promptForString("Please enter a value and press [Enter] (or 'exit' to quit)", false));
+		auto nthDigitStr(prompter.promptForString("Please enter a value and press [Enter] (or 'exit' or 'q' to quit)", false));
 
 		try {
 			auto n(stoi(nthDigitStr));
@@ -30,7 +30,7 @@ int main()
 		}
 		catch (const invalid_argument& invalidArgEx) {
 			// TODO: ajw, 12/04/2018 - make this case invariant
-			if (nthDigitStr._Equal("exit")) {
+			if (nthDigitStr._Equal("exit") || nthDigitStr._Equal("q")) {
 				isRunning = false;
 			}
 			else {
