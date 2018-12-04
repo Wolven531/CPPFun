@@ -9,26 +9,35 @@
 #include "Fibonacci.h"
 #include "Prompter.h"
 
+using namespace std;
+
 int main()
 {
 	Fibonacci fibo;
 	Prompter prompter;
+	auto isRunning(true);
 
 	prompter.displayGreeting("Hello!");
-	auto nthDigitStr(prompter.promptForString("Please enter a value and press [Enter]", false));
-	int n;
 
-	try {
-		n = stoi(nthDigitStr);
-		cout << "Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
+	while (isRunning) {
+		auto nthDigitStr(prompter.promptForString("Please enter a value and press [Enter] (or 'exit' to quit)", false));
 
-		auto result(fibo.GetNthDigit(n));
-
-		cout << "Result = " << result << prompter.getNewLine();
-	}
-	catch (const invalid_argument& invalidArgEx) {
-		//cerr << "Could not parse integer value from input: " << invalidArgEx.what() << prompter.getNewLine();
-		cerr << "Could not parse integer value from input ('" << nthDigitStr << "'), ending..." << prompter.getNewLine();
+		try {
+			auto n(stoi(nthDigitStr));
+			cout << "Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
+			auto result(fibo.GetNthDigit(n));
+			cout << "\tResult = " << result << prompter.getNewLine();
+		}
+		catch (const invalid_argument& invalidArgEx) {
+			// TODO: ajw, 12/04/2018 - make this case invariant
+			if (nthDigitStr._Equal("exit")) {
+				isRunning = false;
+			}
+			else {
+				//cerr << "Could not parse integer value from input: " << invalidArgEx.what() << prompter.getNewLine();
+				cerr << "Could not parse integer value from input ('" << nthDigitStr << "')" << prompter.getNewLine();
+			}
+		}
 	}
 
 	return 0;
