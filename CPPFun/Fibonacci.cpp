@@ -20,3 +20,12 @@ int Fibonacci::GetNthDigit(int n)
 
 	return result;
 }
+
+int Fibonacci::GetNthDigitRecursive(int n)
+{
+	if (n < 3) {
+		return 1;
+	}
+
+	return GetNthDigitRecursive(n - 1) + GetNthDigitRecursive(n - 2);
+}
