@@ -2,9 +2,6 @@
 
 #include "pch.h"
 
-#include <iostream>
-#include <sstream>
-
 #include "CPPFun.h"
 #include "Fibonacci.h"
 #include "Prompter.h"
@@ -25,13 +22,25 @@ int main()
 		try {
 			auto n(stoi(nthDigitStr));
 
+			// NOTE: Iterative pass
 			cout << "[Iterative] Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
-			auto resultIterative(fibo.GetNthDigit(n));
-			cout << "\t[Iterative] Result = " << resultIterative << prompter.getNewLine();
 
+			auto startIterative = chrono::high_resolution_clock::now();
+			auto resultIterative(fibo.GetNthDigit(n));
+			auto endIterative = chrono::high_resolution_clock::now();
+
+			chrono::duration<double> elapsedIterative = endIterative - startIterative;
+			cout << "\t[Iterative] Result = " << resultIterative << " [time=" << elapsedIterative.count() << " secs]" << prompter.getNewLine();
+
+			// NOTE: Recursive pass
 			cout << "[Recursive] Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
+
+			auto startRecursive = chrono::high_resolution_clock::now();
 			auto resultRecursive(fibo.GetNthDigitRecursive(n));
-			cout << "\t[Recursive] Result = " << resultRecursive << prompter.getNewLine();
+			auto endRecursive = chrono::high_resolution_clock::now();
+
+			chrono::duration<double> elapsedRecursive = endRecursive - startRecursive;
+			cout << "\t[Recursive] Result = " << resultRecursive << " [time=" << elapsedRecursive.count() << " secs]" << prompter.getNewLine();
 		}
 		catch (const invalid_argument& invalidArgEx) {
 			// TODO: ajw, 12/04/2018 - make this case invariant
