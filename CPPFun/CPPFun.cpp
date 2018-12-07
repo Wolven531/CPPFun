@@ -24,9 +24,14 @@ int main()
 
 		try {
 			auto n(stoi(nthDigitStr));
-			cout << "Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
-			auto result(fibo.GetNthDigit(n));
-			cout << "\tResult = " << result << prompter.getNewLine();
+
+			cout << "[Iterative] Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
+			auto resultIterative(fibo.GetNthDigit(n));
+			cout << "\t[Iterative] Result = " << resultIterative << prompter.getNewLine();
+
+			cout << "[Recursive] Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
+			auto resultRecursive(fibo.GetNthDigitRecursive(n));
+			cout << "\t[Recursive] Result = " << resultRecursive << prompter.getNewLine();
 		}
 		catch (const invalid_argument& invalidArgEx) {
 			// TODO: ajw, 12/04/2018 - make this case invariant
