@@ -8,6 +8,42 @@
 
 using namespace std;
 
+void timedIterativePass(Fibonacci fibo, int n)
+{
+	cout << "[Iterative] Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << Prompter::getNewLine();
+
+	auto start = chrono::high_resolution_clock::now();
+	auto result(fibo.GetNthDigit(n));
+	auto end = chrono::high_resolution_clock::now();
+
+	chrono::duration<double> elapsed = end - start;
+	cout << "\t[Iterative] Result = " << result << " [time=" << elapsed.count() << " secs]" << Prompter::getNewLine();
+}
+
+void timedRecursivePass(Fibonacci fibo, int n)
+{
+	cout << "[Recursive] Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << Prompter::getNewLine();
+
+	auto start = chrono::high_resolution_clock::now();
+	auto result(fibo.GetNthDigitRecursive(n));
+	auto end = chrono::high_resolution_clock::now();
+
+	chrono::duration<double> elapsed = end - start;
+	cout << "\t[Recursive] Result = " << result << " [time=" << elapsed.count() << " secs]" << Prompter::getNewLine();
+}
+
+void timedDynamicPass(Fibonacci fibo, int n)
+{
+	cout << "[Dynamic] Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << Prompter::getNewLine();
+
+	auto start = chrono::high_resolution_clock::now();
+	auto result(fibo.GetNthDigitDynamic(n));
+	auto end = chrono::high_resolution_clock::now();
+
+	chrono::duration<double> elapsed = end - start;
+	cout << "\t[Dynamic] Result = " << result << " [time=" << elapsed.count() << " secs]" << Prompter::getNewLine();
+}
+
 int main()
 {
 	Fibonacci fibo;
@@ -22,35 +58,9 @@ int main()
 		try {
 			auto n(stoi(nthDigitStr));
 
-			// NOTE: Iterative pass
-			cout << "[Iterative] Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
-
-			auto startIterative = chrono::high_resolution_clock::now();
-			auto resultIterative(fibo.GetNthDigit(n));
-			auto endIterative = chrono::high_resolution_clock::now();
-
-			chrono::duration<double> elapsedIterative = endIterative - startIterative;
-			cout << "\t[Iterative] Result = " << resultIterative << " [time=" << elapsedIterative.count() << " secs]" << prompter.getNewLine();
-
-			// NOTE: Recursive pass
-			cout << "[Recursive] Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
-
-			auto startRecursive = chrono::high_resolution_clock::now();
-			auto resultRecursive(fibo.GetNthDigitRecursive(n));
-			auto endRecursive = chrono::high_resolution_clock::now();
-
-			chrono::duration<double> elapsedRecursive = endRecursive - startRecursive;
-			cout << "\t[Recursive] Result = " << resultRecursive << " [time=" << elapsedRecursive.count() << " secs]" << prompter.getNewLine();
-
-			// NOTE: Dynamic pass
-			cout << "[Dynamic] Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
-
-			auto startDynamic = chrono::high_resolution_clock::now();
-			auto resultDynamic(fibo.GetNthDigitDynamic(n));
-			auto endDynamic = chrono::high_resolution_clock::now();
-
-			chrono::duration<double> elapsedDynamic = endDynamic - startDynamic;
-			cout << "\t[Dynamic] Result = " << resultDynamic << " [time=" << elapsedDynamic.count() << " secs]" << prompter.getNewLine();
+			timedIterativePass(fibo, n);
+			timedRecursivePass(fibo, n);
+			timedDynamicPass(fibo, n);
 		}
 		catch (const invalid_argument& invalidArgEx) {
 			// TODO: ajw, 12/04/2018 - make this case invariant
