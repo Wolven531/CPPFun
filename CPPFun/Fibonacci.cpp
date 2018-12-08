@@ -27,11 +27,15 @@ int Fibonacci::GetNthDigitDynamic(int n)
 	results[0] = 1;
 	results[1] = 1;
 
+	if (n <= 2) {
+		return results[n - 1];
+	}
+
 	for (auto(i) = 2; i < sizeof(results); i++) {
 		results[i] = results[i - 2] + results[i - 1];
 	}
 
-	return results[n];
+	return results[n - 1];
 }
 
 int Fibonacci::GetNthDigitRecursive(int n)
