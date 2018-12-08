@@ -41,6 +41,16 @@ int main()
 
 			chrono::duration<double> elapsedRecursive = endRecursive - startRecursive;
 			cout << "\t[Recursive] Result = " << resultRecursive << " [time=" << elapsedRecursive.count() << " secs]" << prompter.getNewLine();
+
+			// NOTE: Dynamic pass
+			cout << "[Dynamic] Calculating the nth digit of Fibonacci sequence, where n = " << n << "..." << prompter.getNewLine();
+
+			auto startDynamic = chrono::high_resolution_clock::now();
+			auto resultDynamic(fibo.GetNthDigitDynamic(n));
+			auto endDynamic = chrono::high_resolution_clock::now();
+
+			chrono::duration<double> elapsedDynamic = endDynamic - startDynamic;
+			cout << "\t[Dynamic] Result = " << resultDynamic << " [time=" << elapsedDynamic.count() << " secs]" << prompter.getNewLine();
 		}
 		catch (const invalid_argument& invalidArgEx) {
 			// TODO: ajw, 12/04/2018 - make this case invariant
