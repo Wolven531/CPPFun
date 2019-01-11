@@ -67,6 +67,7 @@ int main()
 		catch (const invalid_argument& invalidArgEx) {
 			if (nthDigitStr._Equal("exit") || nthDigitStr._Equal("q")) {
 				isRunning = false;
+				cout << "Exiting... Goodbye!";
 			}
 			else {
 				//cerr << "Could not parse integer value from input: " << invalidArgEx.what() << prompter.getNewLine();
