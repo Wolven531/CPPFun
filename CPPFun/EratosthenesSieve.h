@@ -1,8 +1,10 @@
 #pragma once
 
+#include <list>
+
 class EratosthenesSieve
 {
 public:
-	int * FindPrimesUpTo(int);
+	list<int> FindPrimesUpTo(int);
 };
 
