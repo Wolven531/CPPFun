@@ -44,7 +44,7 @@ void timedDynamicPass(Fibonacci fibo, int n)
 	cout << "\t[Dynamic] Result = " << result << " [time=" << elapsed.count() << " secs]" << Prompter::getNewLine();
 }
 
-int main()
+void runFibonacciTests()
 {
 	Fibonacci fibo;
 	Prompter prompter;
@@ -75,6 +75,11 @@ int main()
 			}
 		}
 	}
+}
+
+int main()
+{
+	runFibonacciTests();
 
 	return 0;
 }
