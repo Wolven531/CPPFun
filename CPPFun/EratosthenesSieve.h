@@ -4,7 +4,7 @@
 
 class EratosthenesSieve
 {
-public:
-	list<int> FindPrimesUpTo(int);
+//public:
+//	list<int> FindPrimesUpTo(int);
 };
 

@@ -80,17 +80,21 @@ void runFibonacciTests()
 
 int main()
 {
-	//runFibonacciTests();
+	runFibonacciTests();
+	/*
 	EratosthenesSieve sieve;
 	auto targetNum(3);
-	auto listOfPrimes(sieve.FindPrimesUpTo(targetNum));
+	*/
+	//auto listOfPrimes(sieve.FindPrimesUpTo(targetNum));
 	//cout << listOfPrimes;
+	/*
 	while(listOfPrimes.size() > 0)
 	{
 		int nextNum = listOfPrimes.front();
 		listOfPrimes.pop_front();
 		cout << nextNum;
 	}
+	*/
 
 	return 0;
 }
