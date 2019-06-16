@@ -3,6 +3,7 @@
 #include "pch.h"
 
 #include "CPPFun.h"
+#include "EratosthenesSieve.h"
 #include "Fibonacci.h"
 #include "Prompter.h"
 
@@ -44,7 +45,7 @@ void timedDynamicPass(Fibonacci fibo, int n)
 	cout << "\t[Dynamic] Result = " << result << " [time=" << elapsed.count() << " secs]" << Prompter::getNewLine();
 }
 
-int main()
+void runFibonacciTests()
 {
 	Fibonacci fibo;
 	Prompter prompter;
@@ -54,6 +55,8 @@ int main()
 
 	while (isRunning) {
 		auto nthDigitStr(prompter.promptForString("Please enter a value and press [Enter] (or 'exit' or 'q' to quit)", false));
+		// NOTE: transform the string to lower case (to support case invariance)
+		transform(nthDigitStr.begin(), nthDigitStr.end(), nthDigitStr.begin(), ::tolower);
 
 		try {
 			auto n(stoi(nthDigitStr));
@@ -63,15 +66,30 @@ int main()
 			timedDynamicPass(fibo, n);
 		}
 		catch (const invalid_argument& invalidArgEx) {
-			// TODO: ajw, 12/04/2018 - make this case invariant
 			if (nthDigitStr._Equal("exit") || nthDigitStr._Equal("q")) {
 				isRunning = false;
+				cout << "Exiting... Goodbye!";
 			}
 			else {
 				//cerr << "Could not parse integer value from input: " << invalidArgEx.what() << prompter.getNewLine();
 				cerr << "Could not parse integer value from input ('" << nthDigitStr << "')" << prompter.getNewLine();
 			}
 		}
+	}
+}
+
+int main()
+{
+	//runFibonacciTests();
+	EratosthenesSieve sieve;
+	auto targetNum(3);
+	auto listOfPrimes(sieve.FindPrimesUpTo(targetNum));
+	//cout << listOfPrimes;
+	while(listOfPrimes.size() > 0)
+	{
+		int nextNum = listOfPrimes.front();
+		listOfPrimes.pop_front();
+		cout << nextNum;
 	}
 
 	return 0;
