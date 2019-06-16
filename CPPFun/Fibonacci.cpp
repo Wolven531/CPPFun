@@ -3,16 +3,16 @@
 
 int Fibonacci::GetNthDigit(int n)
 {
-	auto result(1);
+	int result = 1;
 
 	if (n < 3) {
 		return result;
 	}
 
-	auto num1(1);
-	auto num2(1);
+	int num1 = 1;
+	int num2 = 1;
 
-	for (auto i(3); i <= n; i++) {
+	for (int i(3); i <= n; i++) {
 		result = num1 + num2;
 		num1 = num2;
 		num2 = result;
@@ -27,11 +27,12 @@ int Fibonacci::GetNthDigitDynamic(int n)
 		return 1;
 	}
 
-	auto results(new int[n]);
+	//auto results(new int[n]);
+	int *results = new int[n];
 	results[0] = 1;
 	results[1] = 1;
 
-	for (auto(i) = 2; i < n; i++) {
+	for (int(i) = 2; i < n; i++) {
 		results[i] = results[i - 2] + results[i - 1];
 	}
 
